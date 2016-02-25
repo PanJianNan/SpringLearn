@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+    <bean id="loginController" class="com.yabadun.mall.controllers.LoginController">
+        <property name="securityService">
+            <ref bean="securityService"/>
+        </property>
+    </bean>
+
+    <bean id="securityService" class="com.yabadun.mall.Service.impl.SercurityServiceImpl">
+    </bean>
+</beans>

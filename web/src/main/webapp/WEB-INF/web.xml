@@ -4,5 +4,21 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:/summer/summer-web.xml</param-value>
+    </context-param>
 
+    <listener>
+        <listener-class>com.yabadun.listeners.ContextLoaderListener</listener-class>
+    </listener>
+    
+    <servlet>
+        <servlet-name>testServlet</servlet-name>
+        <servlet-class>com.yabadun.mall.servlets.TestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>testServlet</servlet-name>
+        <url-pattern>/Servlet/test</url-pattern>
+    </servlet-mapping>
 </web-app>
