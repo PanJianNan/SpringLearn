@@ -8,4 +8,5 @@
 
     <bean id="securityService" class="com.yabadun.mall.Service.impl.SercurityServiceImpl">
     </bean>
+
 </beans>

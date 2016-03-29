@@ -10,7 +10,7 @@
     </context-param>
 
     <listener>
-        <listener-class>com.yabadun.listeners.ContextLoaderListener</listener-class>
+        <listener-class>com.yabadun.listener.ContextLoaderListener</listener-class>
     </listener>
     
     <servlet>
@@ -21,4 +21,14 @@
         <servlet-name>testServlet</servlet-name>
         <url-pattern>/Servlet/test</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>com.yabadun.servlet.DispatcherServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
 </web-app>
