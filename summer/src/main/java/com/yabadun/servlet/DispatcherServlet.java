@@ -3,6 +3,7 @@ package com.yabadun.servlet;
 import com.yabadun.annotation.RequestMapping;
 import com.yabadun.util.ClassMethod;
 import com.yabadun.util.ConstantUtil;
+import org.apache.commons.lang.StringUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -70,11 +71,12 @@ public class DispatcherServlet extends HttpServlet {
 
     /**
      * uri前缀 "/"
+     *
      * @param str
      * @return
      */
     private String dealPreStr(String str) {
-        if (!str.startsWith("/")) {
+        if (StringUtils.isNotBlank(str) && !str.startsWith("/")) {
             return "/" + str;
         }
         return str;
