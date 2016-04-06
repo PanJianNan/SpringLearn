@@ -1,19 +1,22 @@
 package com.yabadun.servlet;
 
+import com.yabadun.ModelAndView;
 import com.yabadun.annotation.RequestMapping;
 import com.yabadun.util.ClassMethod;
 import com.yabadun.util.ConstantUtil;
+import com.yabadun.view.AbstractCachingViewResolver;
+import com.yabadun.view.UrlBasedViewResolver;
 import org.apache.commons.lang.StringUtils;
 
-import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -52,15 +55,23 @@ public class DispatcherServlet extends HttpServlet {
         ClassMethod classMethod = ConstantUtil.simpleURIMapping.get(requestURI);
         if (classMethod != null) {
             try {
-                classMethod.getMethod().invoke(classMethod.getObj());
+                Object returnValue = classMethod.getMethod().invoke(classMethod.getObj(), req);
+                    if (returnValue != null) {
+                    if (returnValue instanceof ModelAndView) {//若方法调用结果是ModelAndView则返回相应视图
+                        AbstractCachingViewResolver viewResolver = (AbstractCachingViewResolver) ConstantUtil.beanMap.get("defaultView");
+                        viewResolver.resolveView((ModelAndView) returnValue, req, res);
+                    } else {//否则直接返回结果 todo 可使用fastjson等第三方库加工结果再返回
+                        res.getWriter().print(returnValue);
+                    }
+                }
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (InvocationTargetException e) {
                 e.printStackTrace();
             }
         } else {
-            ServletOutputStream outputStream = res.getOutputStream();
-            outputStream.print("404 !");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/views/error/404.jsp");
+            requestDispatcher.forward(req, res);
         }
     }
 

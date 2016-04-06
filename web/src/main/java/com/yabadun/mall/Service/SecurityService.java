@@ -1,4 +1,6 @@
-package com.yabadun.mall.Service;
+package com.yabadun.mall.service;
+
+import com.yabadun.mall.bean.User;
 
 /**
  * SpringLearn
@@ -7,5 +9,5 @@ package com.yabadun.mall.Service;
  * @date 2016/2/24
  */
 public interface SecurityService {
-    boolean userAuth();
+    boolean userAuth(User user);
 }

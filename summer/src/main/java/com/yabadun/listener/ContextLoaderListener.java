@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * ContextLoaderListener
+ * 自定义上下文载入监听器
  *
  * @author panjn
  * @date 2016/2/24
