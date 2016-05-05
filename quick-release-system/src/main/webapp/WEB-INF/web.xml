@@ -35,6 +35,7 @@
         <url-pattern>*.ico</url-pattern>
         <url-pattern>*.woff</url-pattern>
         <url-pattern>*.ttf</url-pattern>
+        <url-pattern>*.map</url-pattern>
     </servlet-mapping>
 
     <!--自定义请求分发Servlet-->
@@ -54,7 +55,7 @@
     </filter>
     <filter-mapping>
         <filter-name>SecurityServlet</filter-name>
-        <url-pattern>*.jsp</url-pattern>
+        <url-pattern>*</url-pattern>
     </filter-mapping>
     <!--<filter-mapping>
         <filter-name>SecurityServlet</filter-name>

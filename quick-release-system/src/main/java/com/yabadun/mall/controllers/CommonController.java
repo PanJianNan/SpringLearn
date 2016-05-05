@@ -3,6 +3,8 @@ package com.yabadun.mall.controllers;
 import com.yabadun.ModelAndView;
 import com.yabadun.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * CommonController
  *
@@ -11,9 +13,11 @@ import com.yabadun.annotation.RequestMapping;
  */
 @RequestMapping(value = "index")
 public class CommonController {
-    public ModelAndView index() {
+
+    @RequestMapping
+    public ModelAndView index(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setView("/WEB-INF/views/success.jsp");
+        modelAndView.setView("/WEB-INF/views/index.jsp");
         return  modelAndView;
     }
 }

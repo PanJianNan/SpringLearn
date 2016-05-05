@@ -5,7 +5,9 @@ import com.yabadun.mall.bean.User;
 import com.yabadun.mall.service.SecurityService;
 import com.yabadun.annotation.RequestMapping;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * 登录Controller
@@ -25,19 +27,16 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/auth")
-    public ModelAndView auth (HttpServletRequest request) {
+    public String auth (HttpServletRequest request) {
         User user = new User();
         user.setAccount(request.getParameter("account"));
         user.setPassword(request.getParameter("password"));
-        ModelAndView modelAndView = new ModelAndView();
         if (securityService.userAuth(user)) {
-            modelAndView.setView("/WEB-INF/views/success.jsp");
-            modelAndView.addObject("user", user);
-        } else {
-            modelAndView.setView("/WEB-INF/views/login/login.jsp");
-            modelAndView.addObject("message", "账号或密码错误！");
+            HttpSession session = request.getSession();
+            session.setAttribute("isLogin", "true");
+            return "redict:/index";
         }
-        return modelAndView;
+        return "redict:/login";
     }
 
     @RequestMapping(value = "/login")

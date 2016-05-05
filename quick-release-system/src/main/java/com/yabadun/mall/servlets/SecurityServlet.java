@@ -26,9 +26,17 @@ public class SecurityServlet extends HttpServlet implements Filter {
         HttpSession session = request.getSession(true);
         String userCode = (String) request.getRemoteUser();// 登录人
         String userRole = (String) session.getAttribute("role");//登录人角色
+        String isLogin = (String) session.getAttribute("isLogin");//登录人角色
         String url = request.getRequestURI();
 
-        if (StringUtils.isBlank(userCode) || StringUtils.isBlank(userRole)) {
+        if (url.endsWith("*.jpg") || url.endsWith(".png") || url.endsWith(".gif") || url.endsWith(".js")
+                || url.endsWith(".css") || url.endsWith(".ico") || url.endsWith(".woff")
+                || url.endsWith(".woff") || url.endsWith(".woff2") || url.endsWith(".map")) {
+            filterChain.doFilter(servletRequest, servletResponse);
+            return;
+        }
+
+        if (StringUtils.isBlank(isLogin)) {
             //判断获取的路径不为空且不是访问登录页面或执行登录操作时跳转
             if (StringUtils.isNotBlank(url) && (url.indexOf("Login") < 0 && url.indexOf("login") < 0)) {
                 response.sendRedirect(request.getContextPath() + "/login");

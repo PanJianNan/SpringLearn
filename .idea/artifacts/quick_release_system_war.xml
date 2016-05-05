@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="quick-release-system:war">
-    <output-path>$PROJECT_DIR$/quick-release-system/target</output-path>
-    <root id="archive" name="quick-release-system.war">
-      <element id="artifact" artifact-name="quick-release-system:war exploded" />
-    </root>
-  </artifact>
-</component>

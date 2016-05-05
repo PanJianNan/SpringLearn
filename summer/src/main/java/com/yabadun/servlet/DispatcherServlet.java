@@ -63,6 +63,16 @@ public class DispatcherServlet extends HttpServlet {
                     if (returnValue instanceof ModelAndView) {//若方法调用结果是ModelAndView则返回相应视图
                         AbstractCachingViewResolver viewResolver = (AbstractCachingViewResolver) ConstantUtil.beanMap.get("defaultView");
                         viewResolver.resolveView((ModelAndView) returnValue, req, res);
+                    } else if (returnValue instanceof String) {
+                        String value = (String) returnValue;
+                        if (value.startsWith("forward:")) {
+                            //todo
+                        } else if (value.startsWith("redict:")) {
+                            res.sendRedirect(value.replace("redict:", ""));
+                        } else {
+                            AbstractCachingViewResolver viewResolver = (AbstractCachingViewResolver) ConstantUtil.beanMap.get("defaultView");
+                            viewResolver.resolveView(new ModelAndView(value), req, res);
+                        }
                     } else {//否则直接返回结果 todo 可使用fastjson等第三方库加工结果再返回
                         res.getWriter().print(returnValue);
                     }
