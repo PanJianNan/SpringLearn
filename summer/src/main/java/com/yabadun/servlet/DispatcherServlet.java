@@ -11,6 +11,7 @@ import org.apache.commons.lang.StringUtils;
 import javax.servlet.*;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
@@ -50,11 +51,13 @@ public class DispatcherServlet extends HttpServlet {
     }
 
     @Override
-    public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-        String requestURI = ((HttpServletRequest) req).getRequestURI();
+    public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        String requestURI = req.getRequestURI();
         ClassMethod classMethod = ConstantUtil.simpleURIMapping.get(requestURI);
         if (classMethod != null) {
             try {
+                Method method = classMethod.getMethod();
+                method.getParameterTypes();
                 Object returnValue = classMethod.getMethod().invoke(classMethod.getObj(), req);
                     if (returnValue != null) {
                     if (returnValue instanceof ModelAndView) {//若方法调用结果是ModelAndView则返回相应视图

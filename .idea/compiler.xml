@@ -22,13 +22,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="quick-release-system" />
         <module name="summer" />
         <module name="web" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.7">
+      <module name="quick-release-system" target="1.5" />
       <module name="summer" target="1.5" />
-      <module name="web" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

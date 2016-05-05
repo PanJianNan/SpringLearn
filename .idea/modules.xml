@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SpringLearn.iml" filepath="$PROJECT_DIR$/SpringLearn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/quick-release-system/quick-release-system.iml" filepath="$PROJECT_DIR$/quick-release-system/quick-release-system.iml" />
       <module fileurl="file://$PROJECT_DIR$/summer/summer.iml" filepath="$PROJECT_DIR$/summer/summer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />
     </modules>
   </component>
 </project>

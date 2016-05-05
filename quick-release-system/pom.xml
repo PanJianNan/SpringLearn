@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.yabadun</groupId>
+  <artifactId>quick-release-system</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>quick-release-system</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <version.junit>3.8.1</version.junit>
+    <version.servlet>3.1.0</version.servlet>
+    <version.commons.lang3>3.3.1</version.commons.lang3>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.yabadun</groupId>
+      <artifactId>summer</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${version.junit}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Servelt -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>${version.servlet}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>${version.commons.lang3}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>quick-release-system</finalName>
+
+    <plugins>
+      <!-- maven tomcat插件，用于本地测试 -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>tomcat-maven-plugin</artifactId>
+        <version>1.1</version>
+        <configuration>
+          <url>http://127.0.0.1</url>
+          <port>80</port>
+          <path>/</path>
+          <uriEncoding>utf-8</uriEncoding>
+          <charset>utf-8</charset>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

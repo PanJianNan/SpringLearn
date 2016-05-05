@@ -4,7 +4,12 @@ learning spring and making my spring
 
 环境：
 1、jdk 1.7
-2、apache-tomcat-7.0.39
+2、Maven
+3、apache-tomcat-7.0.39
+
+Maven模块解释
+summer模块：Summer框架核心代码
+web模块   ：用于测试的web项目
 
 
 发展历程》》》：
@@ -16,4 +21,4 @@ learning spring and making my spring
            5) bean初始化顺序并非递归式，而是按层次
 
 2、实现视图解析
-    不足   1）请求参数封装，调用方法参数个数不定等未解决
+    不足   1）请求参数封装，反射方法时参数个数不定等未解决
