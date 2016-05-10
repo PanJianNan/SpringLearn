@@ -9,6 +9,7 @@
   <url>http://maven.apache.org</url>
 
   <properties>
+    <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
     <version.junit>3.8.1</version.junit>
     <version.servlet>3.1.0</version.servlet>
     <version.commons.lang3>3.3.1</version.commons.lang3>

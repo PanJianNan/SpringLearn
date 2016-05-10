@@ -31,7 +31,7 @@ public class SecurityServlet extends HttpServlet implements Filter {
 
         if (url.endsWith("*.jpg") || url.endsWith(".png") || url.endsWith(".gif") || url.endsWith(".js")
                 || url.endsWith(".css") || url.endsWith(".ico") || url.endsWith(".woff")
-                || url.endsWith(".woff") || url.endsWith(".woff2") || url.endsWith(".map")) {
+                || url.endsWith(".woff2") || url.endsWith(".map")) {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
