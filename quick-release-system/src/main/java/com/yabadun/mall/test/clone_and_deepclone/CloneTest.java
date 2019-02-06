@@ -24,6 +24,9 @@ public class CloneTest {
         DecimalFormat df = new DecimalFormat("##.000");
         System.out.println(df.format(0.07));
         String shopUrl = "http://www.mPai.jia.cn/haha";
+        shopUrl.intern();
+        String[] strings = {};
+        long a = strings.length;
         if (!shopUrl.startsWith("http")) {
             shopUrl = "http://" + shopUrl;
         }

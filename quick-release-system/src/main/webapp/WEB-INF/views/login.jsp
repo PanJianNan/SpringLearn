@@ -33,7 +33,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <p class="login-box-msg">Sign in to start your mqSession</p>
 
     <form action="/login/auth" method="post">
       <div class="form-group has-feedback">

@@ -7,7 +7,7 @@
   <display-name>Quick Release System</display-name>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:/summer/summer-web.xml</param-value>
+        <param-value>classpath:/summer/summer-application.xml</param-value>
     </context-param>
 
     <!--自定义上下文载入监听器-->
@@ -42,6 +42,12 @@
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>com.yabadun.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <description>加载/WEB-INF/summer/目录下的所有XML作为Summer MVC的配置文件</description>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:/summer/summer-web.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>

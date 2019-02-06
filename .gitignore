@@ -1,3 +1,4 @@
 .idea/
+*.iml
 summer/target/
 quick-release-system/target/
